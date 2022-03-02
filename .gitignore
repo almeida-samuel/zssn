@@ -1,0 +1,16 @@
+# ide stuff
+.vscode
+
+# node stuff
+node_modules
+
+# cache and build files
+/.cache
+/build
+/public/build
+
+# logs
+yarn-error.log
+
+# environment files
+.env

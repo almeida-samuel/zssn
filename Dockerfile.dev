@@ -1,0 +1,12 @@
+FROM node:17.6.0-alpine
+
+RUN mkdir /zssn
+WORKDIR /zssn
+
+COPY ./ ./
+
+RUN yarn install
+
+EXPOSE 3000 8002
+
+CMD yarn run dev

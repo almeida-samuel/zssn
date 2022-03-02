@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+  app-dev:
+    stdin_open: true
+    tty: true
+    image: zssn-dev
+    ports:
+      - "3000:3000"
+      - "8002:8002"
+    env_file:
+      - .env
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./
+    volumes:
+      - ./app:/zssn/app
+    environment:
+      - NODE_ENV=development
+    command: yarn run dev
+  app:
+    stdin_open: true
+    tty: true
+    restart: always
+    image: zssn-prod
+    ports:
+    - "3000:3000"
+    env_file:
+      - .env
+    build:
+      context: ./
+    environment:
+      - NODE_ENV=production
+    command: yarn run start
